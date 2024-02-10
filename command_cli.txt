@@ -1,0 +1,637 @@
+david@lmde:~/k8s-all/easy$ microk8s.kubectl describe node lmde
+Name:               lmde
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/fluentd-ds-ready=true
+                    beta.kubernetes.io/os=linux
+                    feature.node.kubernetes.io/cpu-cpuid.AESNI=true
+                    feature.node.kubernetes.io/cpu-cpuid.AVX=true
+                    feature.node.kubernetes.io/cpu-cpuid.AVXSLOW=true
+                    feature.node.kubernetes.io/cpu-cpuid.IBPB=true
+                    feature.node.kubernetes.io/cpu-cpuid.STIBP=true
+                    feature.node.kubernetes.io/cpu-cpuid.VMX=true
+                    feature.node.kubernetes.io/cpu-cstate.enabled=true
+                    feature.node.kubernetes.io/cpu-hardware_multithreading=false
+                    feature.node.kubernetes.io/cpu-pstate.status=passive
+                    feature.node.kubernetes.io/cpu-pstate.turbo=true
+                    feature.node.kubernetes.io/kernel-config.NO_HZ_FULL=true
+                    feature.node.kubernetes.io/kernel-version.full=6.1.0-17-amd64
+                    feature.node.kubernetes.io/kernel-version.major=6
+                    feature.node.kubernetes.io/kernel-version.minor=1
+                    feature.node.kubernetes.io/kernel-version.revision=0
+                    feature.node.kubernetes.io/pci-1002.present=true
+                    feature.node.kubernetes.io/pci-10ec.present=true
+                    feature.node.kubernetes.io/pci-8086.present=true
+                    feature.node.kubernetes.io/storage-nonrotationaldisk=true
+                    feature.node.kubernetes.io/system-os_release.ID=linuxmint
+                    feature.node.kubernetes.io/system-os_release.VERSION_ID=6
+                    feature.node.kubernetes.io/system-os_release.VERSION_ID.major=6
+                    feature.node.kubernetes.io/usb-ef_1b3f_1167.present=true
+                    gp-install-node=node1
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=lmde
+                    kubernetes.io/os=linux
+                    microk8s.io/cluster=true
+                    node.kubernetes.io/microk8s-controlplane=microk8s-controlplane
+Annotations:        nfd.node.kubernetes.io/extended-resources: 
+                    nfd.node.kubernetes.io/feature-labels:
+                      cpu-cpuid.AESNI,cpu-cpuid.AVX,cpu-cpuid.AVXSLOW,cpu-cpuid.IBPB,cpu-cpuid.STIBP,cpu-cpuid.VMX,cpu-cstate.enabled,cpu-hardware_multithreadin...
+                    nfd.node.kubernetes.io/master.version: v0.10.1
+                    nfd.node.kubernetes.io/worker.version: v0.10.1
+                    node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 192.168.1.24/24
+                    projectcalico.org/IPv4VXLANTunnelAddr: 10.1.181.64
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Tue, 12 Dec 2023 12:15:02 +0100
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  lmde
+  AcquireTime:     <unset>
+  RenewTime:       Sat, 10 Feb 2024 19:14:06 +0100
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Sat, 10 Feb 2024 17:21:31 +0100   Sat, 10 Feb 2024 17:21:31 +0100   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Sat, 10 Feb 2024 19:13:33 +0100   Fri, 26 Jan 2024 13:58:51 +0100   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Sat, 10 Feb 2024 19:13:33 +0100   Fri, 26 Jan 2024 13:58:51 +0100   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Sat, 10 Feb 2024 19:13:33 +0100   Fri, 26 Jan 2024 13:58:51 +0100   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Sat, 10 Feb 2024 19:13:33 +0100   Sat, 10 Feb 2024 17:21:31 +0100   KubeletReady                 kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  192.168.1.24
+  Hostname:    lmde
+Capacity:
+  cpu:                4
+  ephemeral-storage:  70999200Ki
+  hugepages-2Mi:      0
+  memory:             16334044Ki
+  pods:               110
+Allocatable:
+  cpu:                4
+  ephemeral-storage:  69950624Ki
+  hugepages-2Mi:      0
+  memory:             16231644Ki
+  pods:               110
+System Info:
+  Machine ID:                 2bf2a4acc4c84dab9b26644e3f542a19
+  System UUID:                06b22000-2f33-11e1-0000-2c4138a65ae9
+  Boot ID:                    f7f997ce-0ac7-42a9-9dc5-ed8528678402
+  Kernel Version:             6.1.0-17-amd64
+  OS Image:                   LMDE 6 (faye)
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.6.15
+  Kubelet Version:            v1.28.3
+  Kube-Proxy Version:         v1.28.3
+Non-terminated Pods:          (51 in total)
+  Namespace                   Name                                                           CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                           ------------  ----------  ---------------  -------------  ---
+  kube-system                 calico-kube-controllers-77bd7c5b-8wd2z                         0 (0%)        0 (0%)      0 (0%)           0 (0%)         60d
+  gopaddle                    rabbitmq-build-0                                               100m (2%)     2 (50%)     500M (3%)        2G (12%)       19d
+  cert-manager                cert-manager-cainjector-99677759d-nbh9m                        0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  argocd                      argo-cd-argocd-applicationset-controller-f8c6f69c8-hftcv       0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  container-registry          registry-6c9fcc695f-qlzbv                                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  kube-system                 coredns-864597b5fd-rvnxv                                       100m (2%)     0 (0%)      70Mi (0%)        170Mi (1%)     60d
+  kube-system                 calico-node-qx4qg                                              250m (6%)     0 (0%)      0 (0%)           0 (0%)         60d
+  cert-manager                cert-manager-7cf97bbd47-pxszg                                  0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  kube-system                 kubernetes-dashboard-54b48fbf9-2g9cw                           0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  gopaddle                    rabbitmq-0                                                     100m (2%)     1 (25%)     100M (0%)        1G (6%)        19d
+  gopaddle                    esearch-0                                                      300m (7%)     1 (25%)     500M (3%)        2G (12%)       19d
+  argocd                      argo-cd-argocd-notifications-controller-ffc55c889-jhm2g        0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  gpu-operator-resources      gpu-operator-559f7cd69b-5gv5j                                  200m (5%)     500m (12%)  100Mi (0%)       350Mi (2%)     23d
+  istio-system                istiod-77c989fb-cvzg8                                          10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         19d
+  gpu-operator-resources      gpu-operator-node-feature-discovery-worker-vjz2n               0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  gopaddle                    mongodb-0                                                      100m (2%)     2 (50%)     500M (3%)        2G (12%)       19d
+  gopaddle                    redis-5594dd87b9-2cjnt                                         10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  argocd                      argo-cd-argocd-redis-5865c68cfb-7fxjd                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  gopaddle                    influxdb-0                                                     100m (2%)     1 (25%)     100M (0%)        1G (6%)        19d
+  kube-system                 dashboard-metrics-scraper-5657497c4c-bzq5m                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  cert-manager                cert-manager-webhook-8486cb8479-rlkvz                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  argocd                      argo-cd-argocd-application-controller-0                        0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  kube-system                 hostpath-provisioner-7df77bc496-8988l                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  ingress                     nginx-ingress-microk8s-controller-6w65v                        0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  gpu-operator-resources      gpu-operator-node-feature-discovery-master-5bfbc54c8d-l68xd    0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  kube-system                 metrics-server-848968bdcd-xttp8                                100m (2%)     0 (0%)      200Mi (1%)       0 (0%)         60d
+  argocd                      argo-cd-argocd-repo-server-8556fc85ff-v95fb                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  argocd                      argo-cd-argocd-server-8578b9bfb8-skr4x                         0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+  kube-system                 elasticsearch-logging-0                                        100m (2%)     1 (25%)     3Gi (19%)        3Gi (19%)      19d
+  istio-system                istio-ingressgateway-77fbf9d476-vkk6b                          10m (0%)      2 (50%)     40Mi (0%)        1Gi (6%)       19d
+  gopaddle                    appscanner-5b5cfb6c66-5vwwl                                    10m (0%)      300m (7%)   50M (0%)         400M (2%)      19d
+  istio-system                istio-egressgateway-5499894f8d-fcqlw                           10m (0%)      2 (50%)     40Mi (0%)        1Gi (6%)       19d
+  gopaddle                    paymentmanager-846f88c4cc-s7fzz                                10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  kube-system                 fluentd-es-v3.1.0-7v58s                                        100m (2%)     0 (0%)      200Mi (1%)       500Mi (3%)     23d
+  kube-system                 kibana-logging-7784c65fcd-rxp4g                                100m (2%)     1 (25%)     0 (0%)           0 (0%)         19d
+  gopaddle                    clustermanager-5479f494c9-w8csp                                50m (1%)      500m (12%)  50M (0%)         200M (1%)      19d
+  gopaddle                    nodechecker-6f8748bd5c-prlrc                                   50m (1%)      500m (12%)  50M (0%)         200M (1%)      19d
+  gopaddle                    costmanager-665d889b4b-jhnwg                                   10m (0%)      300m (7%)   50M (0%)         500M (3%)      19d
+  gopaddle                    domainmanager-f46598bd8-njvmz                                  10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  gopaddle                    gpcore-ddf97884-mb56d                                          10m (0%)      300m (7%)   50M (0%)         400M (2%)      19d
+  gopaddle                    usermanager-c4685979-2vnjs                                     10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  gopaddle                    appworker-5c7fdc945f-v85hc                                     10m (0%)      300m (7%)   50M (0%)         400M (2%)      19d
+  gopaddle                    gateway-7d859d94c4-jdxrw                                       20m (0%)      250m (6%)   100M (0%)        600M (3%)      19d
+  gopaddle                    marketplace-66466749ff-229ql                                   100m (2%)     300m (7%)   200M (1%)        500M (3%)      19d
+  gopaddle                    deploymentmanager-cfb88fbb4-txgwf                              10m (0%)      300m (7%)   50M (0%)         400M (2%)      19d
+  gopaddle                    webhook-5f4689bcc6-gxwsl                                       10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  gopaddle                    cloudmanager-6b598bb6d9-mh654                                  10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  gopaddle                    alertmanager-8455b6d7bf-7gxbd                                  10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  gopaddle                    activitymanager-6d5db5f4c8-q6w8z                               10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  gopaddle                    configmanager-58cf466bc4-5qfrh                                 10m (0%)      100m (2%)   50M (0%)         100M (0%)      19d
+  argocd                      argo-cd-argocd-dex-server-79b9f9f667-cckgn                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         19d
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests          Limits
+  --------           --------          ------
+  cpu                2040m (51%)       17450m (436%)
+  memory             6807657472 (40%)  18938256640 (113%)
+  ephemeral-storage  0 (0%)            0 (0%)
+  hugepages-2Mi      0 (0%)            0 (0%)
+Events:
+  Type     Reason               Age                   From     Message
+  ----     ------               ----                  ----     -------
+  Warning  FreeDiskSpaceFailed  2m53s (x13 over 62m)  kubelet  (combined from similar events): Failed to garbage collect required amount of images. Attempted to free 7210213376 bytes, but only found 0 bytes eligible to free.
+
+
+david@lmde:~/k8s-all/easy$ microk8s kubectl get all
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   60d
+david@lmde:~/k8s-all/easy$ microk8s status
+microk8s is running
+high-availability: no
+  datastore master nodes: 127.0.0.1:19001
+  datastore standby nodes: none
+addons:
+  enabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) DevSecOps and Multi-Cloud Kubernetes Platform
+    istio                # (community) Core Istio service mesh services
+    openfaas             # (community) OpenFaaS serverless framework
+    cert-manager         # (core) Cloud native certificate management
+    community            # (core) The community addons repository
+    dashboard            # (core) The Kubernetes dashboard
+    dns                  # (core) CoreDNS
+    ha-cluster           # (core) Configure high availability on the current node
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    ingress              # (core) Ingress controller for external access
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    registry             # (core) Private image registry exposed on localhost:32000
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    cilium               # (community) SDN, fast with full network policy
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    nfs                  # (community) NFS Server Provisioner
+    ondat                # (community) Ondat is a software-defined, cloud native storage platform for Kubernetes.
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cis-hardening        # (core) Apply CIS K8s hardening
+    gpu                  # (core) Automatic enablement of Nvidia CUDA
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+david@lmde:~/k8s-all/easy$ sudo microk8s inspect
+[sudo] hasło użytkownika david:            
+sudo: microk8s: nie znaleziono polecenia
+david@lmde:~/k8s-all/easy$ sudo microk8s kubectl get all -n kube-system
+sudo: microk8s: nie znaleziono polecenia
+david@lmde:~/k8s-all/easy$ microk8s kubectl get all -n kube-system
+NAME                                             READY   STATUS                   RESTARTS        AGE
+pod/dashboard-metrics-scraper-5657497c4c-tjw7q   0/1     ContainerStatusUnknown   0               19d
+pod/kubernetes-dashboard-54b48fbf9-8dj7m         0/1     ContainerStatusUnknown   0               19d
+pod/hostpath-provisioner-7df77bc496-gbg9q        0/1     ContainerStatusUnknown   0               60d
+pod/kubernetes-dashboard-54b48fbf9-hz4tp         0/1     ContainerStatusUnknown   0               22d
+pod/dashboard-metrics-scraper-5657497c4c-2s9cx   0/1     ContainerStatusUnknown   0               22d
+pod/dashboard-metrics-scraper-5657497c4c-hn894   0/1     ContainerStatusUnknown   0               60d
+pod/kubernetes-dashboard-54b48fbf9-v4fqf         0/1     ContainerStatusUnknown   0               22d
+pod/kubernetes-dashboard-54b48fbf9-fl6lk         0/1     ContainerStatusUnknown   0               60d
+pod/kibana-logging-7784c65fcd-kgl8n              0/1     ContainerStatusUnknown   0               22d
+pod/kubernetes-dashboard-54b48fbf9-5pq5s         0/1     ContainerStatusUnknown   1 (19d ago)     19d
+pod/kubernetes-dashboard-54b48fbf9-jd5jj         0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-tvbtk              0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-w592b              0/1     Completed                2 (19d ago)     19d
+pod/hostpath-provisioner-7df77bc496-zhv6w        0/1     ContainerStatusUnknown   0               19d
+pod/hostpath-provisioner-7df77bc496-k76mn        0/1     ContainerStatusUnknown   0               19d
+pod/dashboard-metrics-scraper-5657497c4c-slkfx   0/1     ContainerStatusUnknown   3 (19d ago)     19d
+pod/kubernetes-dashboard-54b48fbf9-26hwq         0/1     ContainerStatusUnknown   1 (19d ago)     19d
+pod/dashboard-metrics-scraper-5657497c4c-pxz6w   0/1     ContainerStatusUnknown   2 (19d ago)     19d
+pod/hostpath-provisioner-7df77bc496-schxd        0/1     ContainerStatusUnknown   0               19d
+pod/dashboard-metrics-scraper-5657497c4c-9lszg   0/1     ContainerStatusUnknown   2 (19d ago)     19d
+pod/kibana-logging-7784c65fcd-4xgkq              0/1     Error                    0               19d
+pod/kubernetes-dashboard-54b48fbf9-kvf4b         0/1     Error                    2               19d
+pod/kubernetes-dashboard-54b48fbf9-fpgtm         0/1     Error                    3               19d
+pod/hostpath-provisioner-7df77bc496-mx66q        0/1     ContainerStatusUnknown   0               19d
+pod/hostpath-provisioner-7df77bc496-24tk5        0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-zvm4l              0/1     Completed                2 (19d ago)     19d
+pod/kubernetes-dashboard-54b48fbf9-l8fw2         0/1     ContainerStatusUnknown   0               19d
+pod/dashboard-metrics-scraper-5657497c4c-tdm9d   0/1     Error                    0               19d
+pod/hostpath-provisioner-7df77bc496-xdm5f        0/1     ContainerStatusUnknown   0               19d
+pod/dashboard-metrics-scraper-5657497c4c-ntpds   0/1     Error                    0               19d
+pod/dashboard-metrics-scraper-5657497c4c-9pxr9   0/1     ContainerStatusUnknown   0               19d
+pod/hostpath-provisioner-7df77bc496-29rml        0/1     ContainerStatusUnknown   0               19d
+pod/dashboard-metrics-scraper-5657497c4c-8b9gf   0/1     ContainerStatusUnknown   0               19d
+pod/kubernetes-dashboard-54b48fbf9-g8smk         0/1     ContainerStatusUnknown   1 (19d ago)     19d
+pod/dashboard-metrics-scraper-5657497c4c-f4cdq   0/1     ContainerStatusUnknown   0               19d
+pod/hostpath-provisioner-7df77bc496-qk9gk        0/1     ContainerStatusUnknown   0               19d
+pod/kubernetes-dashboard-54b48fbf9-4jv9v         0/1     ContainerStatusUnknown   1 (19d ago)     19d
+pod/hostpath-provisioner-7df77bc496-wzt8q        0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-wnsgw              0/1     ContainerStatusUnknown   0               23d
+pod/kibana-logging-7784c65fcd-fkngm              0/1     Error                    1               19d
+pod/kubernetes-dashboard-54b48fbf9-rzdnn         0/1     ContainerStatusUnknown   0               19d
+pod/kubernetes-dashboard-54b48fbf9-qp9lh         0/1     ContainerStatusUnknown   1 (19d ago)     19d
+pod/kibana-logging-7784c65fcd-ftxtd              0/1     ContainerStatusUnknown   1               19d
+pod/hostpath-provisioner-7df77bc496-qsv8p        0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-7mjlp              0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-zmg2r              0/1     ContainerStatusUnknown   1               19d
+pod/hostpath-provisioner-7df77bc496-4hwsr        0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-mgtd9              0/1     ContainerStatusUnknown   0               19d
+pod/kibana-logging-7784c65fcd-b8x6v              0/1     ContainerStatusUnknown   0               19d
+pod/dashboard-metrics-scraper-5657497c4c-46ktp   0/1     Error                    0               19d
+pod/kibana-logging-7784c65fcd-jmxvs              0/1     ContainerStatusUnknown   2 (19d ago)     19d
+pod/kibana-logging-7784c65fcd-kvx2z              0/1     Completed                2 (19d ago)     19d
+pod/dashboard-metrics-scraper-5657497c4c-chtzv   0/1     Error                    0               19d
+pod/calico-kube-controllers-77bd7c5b-8wd2z       1/1     Running                  45 (93m ago)    60d
+pod/coredns-864597b5fd-rvnxv                     1/1     Running                  45 (93m ago)    60d
+pod/calico-node-qx4qg                            1/1     Running                  43 (93m ago)    60d
+pod/kubernetes-dashboard-54b48fbf9-2g9cw         1/1     Running                  27 (93m ago)    19d
+pod/dashboard-metrics-scraper-5657497c4c-bzq5m   1/1     Running                  26 (93m ago)    19d
+pod/hostpath-provisioner-7df77bc496-8988l        1/1     Running                  70 (93m ago)    19d
+pod/metrics-server-848968bdcd-xttp8              1/1     Running                  45 (93m ago)    60d
+pod/elasticsearch-logging-0                      1/1     Running                  25 (93m ago)    19d
+pod/fluentd-es-v3.1.0-7v58s                      1/1     Running                  169 (92m ago)   23d
+pod/kibana-logging-7784c65fcd-rxp4g              1/1     Running                  105 (92m ago)   19d
+
+NAME                                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                  AGE
+service/kube-dns                    ClusterIP   10.152.183.10    <none>        53/UDP,53/TCP,9153/TCP   60d
+service/metrics-server              ClusterIP   10.152.183.69    <none>        443/TCP                  60d
+service/kubernetes-dashboard        ClusterIP   10.152.183.236   <none>        443/TCP                  60d
+service/dashboard-metrics-scraper   ClusterIP   10.152.183.181   <none>        8000/TCP                 60d
+service/elasticsearch-logging       ClusterIP   None             <none>        9200/TCP,9300/TCP        23d
+service/kibana-logging              ClusterIP   10.152.183.224   <none>        5601/TCP                 23d
+
+NAME                               DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+daemonset.apps/calico-node         1         1         1       1            1           kubernetes.io/os=linux   60d
+daemonset.apps/fluentd-es-v3.1.0   1         1         1       1            1           <none>                   23d
+
+NAME                                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/coredns                     1/1     1            1           60d
+deployment.apps/calico-kube-controllers     1/1     1            1           60d
+deployment.apps/dashboard-metrics-scraper   1/1     1            1           60d
+deployment.apps/kubernetes-dashboard        1/1     1            1           60d
+deployment.apps/hostpath-provisioner        1/1     1            1           60d
+deployment.apps/metrics-server              1/1     1            1           60d
+deployment.apps/kibana-logging              1/1     1            1           23d
+
+NAME                                                   DESIRED   CURRENT   READY   AGE
+replicaset.apps/coredns-864597b5fd                     1         1         1       60d
+replicaset.apps/calico-kube-controllers-77bd7c5b       1         1         1       60d
+replicaset.apps/dashboard-metrics-scraper-5657497c4c   1         1         1       60d
+replicaset.apps/kubernetes-dashboard-54b48fbf9         1         1         1       60d
+replicaset.apps/hostpath-provisioner-7df77bc496        1         1         1       60d
+replicaset.apps/metrics-server-848968bdcd              1         1         1       60d
+replicaset.apps/kibana-logging-7784c65fcd              1         1         1       23d
+
+NAME                                     READY   AGE
+statefulset.apps/elasticsearch-logging   1/1     23d
+
+Driver	Description
+none	No logs are available for the container and docker logs does not return any output.
+local	Logs are stored in a custom format designed for minimal overhead.
+json-file	The logs are formatted as JSON. The default logging driver for Docker.
+syslog	Writes logging messages to the syslog facility. The syslog daemon must be running on the host machine.
+journald	Writes log messages to journald. The journald daemon must be running on the host machine.
+gelf	Writes log messages to a Graylog Extended Log Format (GELF) endpoint such as Graylog or Logstash.
+fluentd	Writes log messages to fluentd (forward input). The fluentd daemon must be running on the host machine.
+awslogs	Writes log messages to Amazon CloudWatch Logs.
+splunk	Writes log messages to splunk using the HTTP Event Collector.
+etwlogs	Writes log messages as Event Tracing for Windows (ETW) events. Only available on Windows platforms.
+gcplogs	Writes log messages to Google Cloud Platform (GCP) Logging.
+logentries	Writes log messages to Rapid7 Logentries.
+
+https://www.elastic.co/guide/en/beats/loggingplugin/current/log-driver-configuration.html
+
+david@lmde:~$ kubectl get po,ing,svc,pv,pvc,sc,ep,rc,deploy,replicaset,daemonset
+NAME                                                                  READY   STATUS    RESTARTS        AGE
+pod/flinkbitnami-jobmanager-578c45fd5-m4h84                           1/1     Running   5 (3h21m ago)   62d
+pod/flinkbitnami-taskmanager-64fcdf8476-wd8mx                         1/1     Running   3 (3h21m ago)   62d
+pod/jenkinsbitnami-69755ffdcb-4kblr                                   1/1     Running   4 (3h21m ago)   62d
+pod/kafkabitnami-0                                                    1/1     Running   10 (13m ago)    62d
+pod/kafkabitnami-client                                               0/1     Error     0               62d
+pod/mongodb-75ff454cbc-nl2xj                                          1/1     Running   6 (3h21m ago)   63d
+pod/my-release-jenkins-6689fc4db9-5d5zr                               2/2     Running   8 (3h21m ago)   62d
+pod/nginx-ingress-controller-bitnami-6b5f9cb9d-564tb                  1/1     Running   3 (3h21m ago)   62d
+pod/nginx-ingress-controller-bitnami-default-backend-698fcff455pj87   1/1     Running   3 (3h21m ago)   62d
+pod/odoo-56fb5bcd6-kcdls                                              1/1     Running   6 (3h21m ago)   63d
+pod/odoo-postgresql-0                                                 1/1     Running   6 (3h21m ago)   63d
+pod/rabbitmqbitnami-0                                                 1/1     Running   3 (3h21m ago)   62d
+pod/redis-master-0                                                    1/1     Running   6 (3h21m ago)   63d
+pod/redis-replicas-0                                                  1/1     Running   12 (14m ago)    63d
+pod/redis-replicas-1                                                  1/1     Running   11 (14m ago)    63d
+pod/redis-replicas-2                                                  1/1     Running   10 (14m ago)    63d
+pod/web-68487bc957-69prv                                              1/1     Running   3 (3h21m ago)   62d
+pod/wildflybitnami-5544cb9c58-ddj7n                                   1/1     Running   3 (3h21m ago)   62d
+
+NAME                                                       TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                                 AGE
+service/flinkbitnami-jobmanager                            ClusterIP      10.103.116.137   <none>        6123/TCP,8081/TCP,6124/TCP              62d
+service/flinkbitnami-taskmanager                           ClusterIP      10.104.111.144   <none>        6121/TCP,6122/TCP                       62d
+service/jenkinsbitnami                                     LoadBalancer   10.108.54.60     <pending>     80:31727/TCP,443:32097/TCP              62d
+service/kafkabitnami                                       ClusterIP      10.106.54.237    <none>        9092/TCP                                62d
+service/kafkabitnami-headless                              ClusterIP      None             <none>        9092/TCP,9094/TCP,9093/TCP              62d
+service/kubernetes                                         ClusterIP      10.96.0.1        <none>        443/TCP                                 63d
+service/mongodb                                            ClusterIP      10.97.94.77      <none>        27017/TCP                               63d
+service/my-release-jenkins                                 ClusterIP      10.110.25.12     <none>        8080/TCP                                62d
+service/my-release-jenkins-agent                           ClusterIP      10.106.32.73     <none>        50000/TCP                               62d
+service/nginx-ingress-controller-bitnami                   LoadBalancer   10.100.99.52     <pending>     80:32005/TCP,443:31461/TCP              62d
+service/nginx-ingress-controller-bitnami-default-backend   ClusterIP      10.103.205.86    <none>        80/TCP                                  62d
+service/odoo                                               LoadBalancer   10.109.0.178     <pending>     80:31831/TCP                            63d
+service/odoo-postgresql                                    ClusterIP      10.103.243.222   <none>        5432/TCP                                63d
+service/odoo-postgresql-hl                                 ClusterIP      None             <none>        5432/TCP                                63d
+service/rabbitmqbitnami                                    ClusterIP      10.105.59.105    <none>        5672/TCP,4369/TCP,25672/TCP,15672/TCP   62d
+service/rabbitmqbitnami-headless                           ClusterIP      None             <none>        4369/TCP,5672/TCP,25672/TCP,15672/TCP   62d
+service/redis-headless                                     ClusterIP      None             <none>        6379/TCP                                63d
+service/redis-master                                       ClusterIP      10.105.222.120   <none>        6379/TCP                                63d
+service/redis-replicas                                     ClusterIP      10.108.116.255   <none>        6379/TCP                                63d
+service/web                                                NodePort       10.110.63.135    <none>        8080:30079/TCP                          62d
+service/wildflybitnami                                     LoadBalancer   10.98.198.6      <pending>     80:32570/TCP                            62d
+
+NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                 STORAGECLASS   REASON   AGE
+persistentvolume/pvc-31d7d3db-7296-4da8-9c5c-42efd5cb3302   8Gi        RWO            Delete           Bound    default/mongodb                       standard                63d
+persistentvolume/pvc-4ead03c5-a555-43de-8ef2-ac1f2709f464   8Gi        RWO            Delete           Bound    default/redis-data-redis-replicas-1   standard                63d
+persistentvolume/pvc-57612088-d418-4fa3-8d66-71f5b04f4801   10Gi       RWO            Delete           Bound    default/odoo                          standard                63d
+persistentvolume/pvc-7f10f14e-b6ff-45eb-b523-50ae053e8719   8Gi        RWO            Delete           Bound    default/data-kafkabitnami-0           standard                62d
+persistentvolume/pvc-8780e8f3-432d-44b7-be3e-f73820da9875   8Gi        RWO            Delete           Bound    default/jenkinsbitnami                standard                62d
+persistentvolume/pvc-881990fa-66fd-4f30-8e0f-df7618eea67d   8Gi        RWO            Delete           Bound    default/wildflybitnami                standard                62d
+persistentvolume/pvc-a89fa4ce-ae2a-480d-922f-4ad1420074e9   8Gi        RWO            Delete           Bound    default/redis-data-redis-master-0     standard                63d
+persistentvolume/pvc-b1a452b7-9b8c-46b3-9744-1d38497309f2   8Gi        RWO            Delete           Bound    default/data-rabbitmqbitnami-0        standard                62d
+persistentvolume/pvc-b5f21d96-cf07-49da-a9ef-7b968ab48f3b   8Gi        RWO            Delete           Bound    default/my-release-jenkins            standard                62d
+persistentvolume/pvc-e8156d39-3284-4dab-b0d5-ff79df7b5227   8Gi        RWO            Delete           Bound    default/data-odoo-postgresql-0        standard                63d
+persistentvolume/pvc-edc65e3a-8c6b-47d1-b6a9-377fa71b8913   8Gi        RWO            Delete           Bound    default/redis-data-redis-replicas-2   standard                63d
+persistentvolume/pvc-f9f07e68-6100-4b52-85ba-5e73071887c6   8Gi        RWO            Delete           Bound    default/redis-data-redis-replicas-0   standard                63d
+
+NAME                                                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+persistentvolumeclaim/data-kafkabitnami-0           Bound    pvc-7f10f14e-b6ff-45eb-b523-50ae053e8719   8Gi        RWO            standard       62d
+persistentvolumeclaim/data-odoo-postgresql-0        Bound    pvc-e8156d39-3284-4dab-b0d5-ff79df7b5227   8Gi        RWO            standard       63d
+persistentvolumeclaim/data-rabbitmqbitnami-0        Bound    pvc-b1a452b7-9b8c-46b3-9744-1d38497309f2   8Gi        RWO            standard       62d
+persistentvolumeclaim/jenkinsbitnami                Bound    pvc-8780e8f3-432d-44b7-be3e-f73820da9875   8Gi        RWO            standard       62d
+persistentvolumeclaim/mongodb                       Bound    pvc-31d7d3db-7296-4da8-9c5c-42efd5cb3302   8Gi        RWO            standard       63d
+persistentvolumeclaim/my-release-jenkins            Bound    pvc-b5f21d96-cf07-49da-a9ef-7b968ab48f3b   8Gi        RWO            standard       62d
+persistentvolumeclaim/odoo                          Bound    pvc-57612088-d418-4fa3-8d66-71f5b04f4801   10Gi       RWO            standard       63d
+persistentvolumeclaim/redis-data-redis-master-0     Bound    pvc-a89fa4ce-ae2a-480d-922f-4ad1420074e9   8Gi        RWO            standard       63d
+persistentvolumeclaim/redis-data-redis-replicas-0   Bound    pvc-f9f07e68-6100-4b52-85ba-5e73071887c6   8Gi        RWO            standard       63d
+persistentvolumeclaim/redis-data-redis-replicas-1   Bound    pvc-4ead03c5-a555-43de-8ef2-ac1f2709f464   8Gi        RWO            standard       63d
+persistentvolumeclaim/redis-data-redis-replicas-2   Bound    pvc-edc65e3a-8c6b-47d1-b6a9-377fa71b8913   8Gi        RWO            standard       63d
+persistentvolumeclaim/wildflybitnami                Bound    pvc-881990fa-66fd-4f30-8e0f-df7618eea67d   8Gi        RWO            standard       62d
+
+NAME                                             PROVISIONER                RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+storageclass.storage.k8s.io/standard (default)   k8s.io/minikube-hostpath   Delete          Immediate           false                  63d
+
+NAME                                                         ENDPOINTS                                                            AGE
+endpoints/flinkbitnami-jobmanager                            10.244.0.111:8081,10.244.0.111:6123,10.244.0.111:6124                62d
+endpoints/flinkbitnami-taskmanager                           10.244.0.108:6122,10.244.0.108:6121                                  62d
+endpoints/jenkinsbitnami                                     10.244.0.127:8443,10.244.0.127:8080                                  62d
+endpoints/kafkabitnami                                       10.244.0.112:9092                                                    62d
+endpoints/kafkabitnami-headless                              10.244.0.112:9092,10.244.0.112:9093,10.244.0.112:9094                62d
+endpoints/kubernetes                                         192.168.49.2:8443                                                    63d
+endpoints/mongodb                                            10.244.0.109:27017                                                   63d
+endpoints/my-release-jenkins                                 10.244.0.115:8080                                                    62d
+endpoints/my-release-jenkins-agent                           10.244.0.115:50000                                                   62d
+endpoints/nginx-ingress-controller-bitnami                   10.244.0.122:443,10.244.0.122:80                                     62d
+endpoints/nginx-ingress-controller-bitnami-default-backend   10.244.0.107:8080                                                    62d
+endpoints/odoo                                               10.244.0.126:8069                                                    63d
+endpoints/odoo-postgresql                                    10.244.0.120:5432                                                    63d
+endpoints/odoo-postgresql-hl                                 10.244.0.120:5432                                                    63d
+endpoints/rabbitmqbitnami                                    10.244.0.110:5672,10.244.0.110:15672,10.244.0.110:4369 + 1 more...   62d
+endpoints/rabbitmqbitnami-headless                           10.244.0.110:5672,10.244.0.110:15672,10.244.0.110:4369 + 1 more...   62d
+endpoints/redis-headless                                     10.244.0.113:6379,10.244.0.114:6379,10.244.0.123:6379 + 1 more...    63d
+endpoints/redis-master                                       10.244.0.113:6379                                                    63d
+endpoints/redis-replicas                                     10.244.0.114:6379,10.244.0.123:6379,10.244.0.125:6379                63d
+endpoints/web                                                10.244.0.128:8080                                                    62d
+endpoints/wildflybitnami                                     10.244.0.124:8080                                                    62d
+
+NAME                                                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/flinkbitnami-jobmanager                            1/1     1            1           62d
+deployment.apps/flinkbitnami-taskmanager                           1/1     1            1           62d
+deployment.apps/jenkinsbitnami                                     1/1     1            1           62d
+deployment.apps/mongodb                                            1/1     1            1           63d
+deployment.apps/my-release-jenkins                                 1/1     1            1           62d
+deployment.apps/nginx-ingress-controller-bitnami                   1/1     1            1           62d
+deployment.apps/nginx-ingress-controller-bitnami-default-backend   1/1     1            1           62d
+deployment.apps/odoo                                               1/1     1            1           63d
+deployment.apps/web                                                1/1     1            1           62d
+deployment.apps/wildflybitnami                                     1/1     1            1           62d
+
+NAME                                                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/flinkbitnami-jobmanager-578c45fd5                             1         1         1       62d
+replicaset.apps/flinkbitnami-taskmanager-64fcdf8476                           1         1         1       62d
+replicaset.apps/jenkinsbitnami-69755ffdcb                                     1         1         1       62d
+replicaset.apps/mongodb-75ff454cbc                                            1         1         1       63d
+replicaset.apps/my-release-jenkins-6689fc4db9                                 1         1         1       62d
+replicaset.apps/nginx-ingress-controller-bitnami-6b5f9cb9d                    1         1         1       62d
+replicaset.apps/nginx-ingress-controller-bitnami-default-backend-698fcff45c   1         1         1       62d
+replicaset.apps/odoo-56fb5bcd6                                                1         1         1       63d
+replicaset.apps/web-68487bc957                                                1         1         1       62d
+replicaset.apps/wildflybitnami-5544cb9c58                                     1         1         1       62d
+david@lmde:~$ history |grep kubectl
+   50  history |grep kubectl
+   52  kubectl get pods
+   53  kubectl get pods -a
+   54  kubectl get pods -all
+   55  kubectl get pods --all
+   56  kubectl get pods -A
+   81  lskubectl cluster-info
+   90  kubectl cluster-info
+   91  kubectl get pods -A
+   96  kubectl create -f https://operatorhub.io/install/jenkins-operator.yaml
+   97  kubectl get csv -n my-jenkins-operator
+   99  kubectl create -f https://operatorhub.io/install/galaxy-operator.yaml
+  100  kubectl get csv -n my-galaxy-operator
+  111  $> kubectl apply -f https://raw.githubusercontent.com/mysql/mysql-operator/trunk/deploy/deploy-crds.yaml
+  119  kubectl --namespace default get pods -l "release=prometheus"
+  121  kubectl version --short | awk -Fv '/Server Version: / {print $3}'
+  122  kubectl get nodes -o wide
+  124  kubectl get sc
+  125   kubectl get pvc
+  126  kubectl apply -f https://raw.githubusercontent.com/percona/percona-xtradb-cluster-operator/v1.11.0/deploy/bundle.yaml
+  127  kubectl apply -f 0-cr-minimal.yaml
+  129  kubectl apply -f 0-cr-minimal.yaml
+  131  kubectl apply -f https://k8s.io/examples/application/mysql/mysql-pv.yaml
+  132  kubectl apply -f https://k8s.io/examples/application/mysql/mysql-deployment.yaml
+  133  kubectl describe deployment mysql
+  134  kubectl get pods -l app=mysql
+  135  kubectl describe pvc mysql-pv-claim
+  136  kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -ppassword
+  139  kubectl delete pods –all
+  140  kubectl get pods
+  141  kubectl delete sv --all
+  142  kubectl delete pods --purge
+  143  kubectl get nodes -o wide
+  144  kubectl get pods -o wide
+  145  kubectl get deployment,svc,pods,pvc,rc,rs ruby-2.1.5
+  146  kubectl get deployment,svc,pods,pvc,rc,rs
+  147  kubectl delete --all namespaces
+  148  kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+  149  kubectl expose deployment web --type=NodePort --port=8080
+  150  kubectl get service web
+  156  kubectl delete po,ing,svc,pv,pvc,sc,ep,rc,deploy,replicaset,daemonset --all -A
+  157  kubectl get pod
+  158  kubectl get pods
+  159  kubectl get pods --all
+  160  kubectl get po,ing,svc,pv,pvc,sc,ep,rc,deploy,replicaset,daemonset --all -A
+  161  kubectl get po,ing,svc,pv,pvc,sc,ep,rc,deploy,replicaset,daemonset
+  174  kubectl get pods
+  175  kubectl exec -it my-release-mariadb-0 -- dash
+  178  kubectl create secret generic mysql-secrets --from-literal=rootpw=secretpw
+  179  kubectl get services
+  191  kubectl proxy
+  193  kubectl get nodes
+  194  kubectl describe node
+  201  kubectl get services
+  203  kubectl get services
+  214  kubectl get
+  222  kubectl cluster-info
+  225  kubectl get secret --namespace default my-release-jenkins -o jsonpath="{.data.jenkins-password}" | base64 -d
+  228  printf $(kubectl get secret --namespace sybrenbolandit jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  236  kubectl delete deploy jenkins
+  261  kubectl get pods --namespace=jenkins
+  262  printf $(kubectl get secret --namespace jenkins jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  263  kubectl --namespace jenkins port-forward $POD_NAME 8080:8080
+  264  kubectl --namespace jenkins port-forward $jenkins-548d4869b7-pz8jp 8080:8080
+  265  kubectl --namespace jenkins port-forward jenkins-548d4869b7-pz8jp 8080:8080
+  268  printf $(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  269  printf $(kubectl get secret --namespace default jenkinsbitnami -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  270  kubectl logs jenkinsbitnami
+  271  kubectl pods
+  272  kubectl logs jenkinsbitnami-69755ffdcb-4kblr
+  276  printf $(kubectl get secret --namespace jenkins jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  277  printf $(kubectl get secret --namespace jenkinsbitnami jenkinsbitnami -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  278  printf $(kubectl get secret --namespace jenkins jenkinsbitnami -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  280  kubectl pods
+  281  kubectl get pods --namespace=jenkins
+  282  kubectl get pods --namespace=my-release
+  283  kubectl get pods --namespace=my-release-jenkins
+  284  kubectl exec -it my-release-jenkins-6689fc4db9-5d5zr -c jenkins /bin/bash
+  285  kubectl exec -it my-release-jenkins-6689fc4db9-5d5zr -c jenkins /bin/bash chown -R 1000:1000 /var/jenkins_home
+  286  kubectl exec -it my-release-jenkins-6689fc4db9-5d5zr -c jenkins /bin/bash
+  288  kubectl --namespace default port-forward my-release-jenkins-6689fc4db9-5d5zr 8080:8088
+  289  kubectl --namespace default port-forward my-release-jenkins-6689fc4db9-5d5zr 8088:8080
+  290  kubectl --namespace default port-forward my-release-jenkins-6689fc4db9-5d5zr 8080:8080
+  295  kubectl get svc --namespace default -w wildflybitnami
+  296  export SERVICE_IP=$(kubectl get svc --namespace default wildflybitnami --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+  298  export 10.98.198.6=$(kubectl get svc --namespace default wildflybitnami --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+  301  export 10.98.198.6=$(kubectl get svc --namespace default wildflybitnami --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+  303  export SERVICE_IP=$(kubectl get svc --namespace default wildflybitnami --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+  306  kubectl get --namespace default svc -w nginx-ingress-controller-bitnami
+  307  kubectl get --namespace default svc -w nginx-ingress-controller-bitnami
+  309  kubectl run kafkabitnami-client --restart='Never' --image docker.io/bitnami/kafka:3.4.0-debian-11-r33 --namespace default --command -- sleep infinity
+  310  kubectl exec --tty -i kafkabitnami-client --namespace default -- bash
+  311  kubectl get pods -n ingress-nginx
+  312  kubectl create deployment web --image=gcr.io/google-samples/hello-app:1.0
+  313  kubectl expose deployment web --type=NodePort --port=8080
+  315  kubectl get service web
+  319      echo "Password      : $(kubectl get secret --namespace default rabbitmqbitnami -o jsonpath="{.data.rabbitmq-password}" | base64 -d)"
+  320      echo "ErLang Cookie : $(kubectl get secret --namespace default rabbitmqbitnami -o jsonpath="{.data.rabbitmq-erlang-cookie}" | base64 -d)"
+  321  kubectl port-forward --namespace default svc/rabbitmqbitnami 15672:15672
+  324  printf $(kubectl get secret --namespace jenkins jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  325  printf $(kubectl get secret --namespace default my-release-jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  330  kubectl port-forward svc/flinkbitnami-jobmanager 8081:8081
+  331  kubectl port-forward svc/flinkbitnami-jobmanager 8081:8081 &
+  491  history |grep kubectl
+  493   kubectl pod
+  494   kubectl pods
+  495  kubectl get pods
+  496  kubectl get pods kafkabitnami-0
+  501  kubectl version --short | awk -Fv '/Server Version: / {print $3}'
+  502  kubectl get nodes -o wide
+  503  kubectl get sc
+  504  kubectl get sc
+  505  kubectl delete sv --all
+  506  kubectl get nodes -o wide
+  507  kubectl get po,ing,svc,pv,pvc,sc,ep,rc,deploy,replicaset,daemonset --all -A
+  508  kubectl get po,ing,svc,pv,pvc,sc,ep,rc,deploy,replicaset,daemonset
+  509  history |grep kubectl
+david@lmde:~$ 
+
+avid@lmde:~$ minikube ssh
+Last login: Thu Jun  1 15:12:47 2023 from 192.168.49.1
+docker@minikube:~$ docker ps
+CONTAINER ID   IMAGE                       COMMAND                  CREATED          STATUS          PORTS     NAMES
+4b83f9204aba   5265b134feae                "/scripts/setup.sh"      18 minutes ago   Up 18 minutes             k8s_kafka_kafkabitnami-0_default_de4492ea-a340-428c-9413-00144132d498_10
+833b7eca905b   0383c71164bc                "/bin/bash -c /opt/b…"   19 minutes ago   Up 19 minutes             k8s_redis_redis-replicas-1_default_82ed3b7d-bca9-4352-b070-02662d0ad423_11
+b481e8e7bf18   0383c71164bc                "/bin/bash -c /opt/b…"   19 minutes ago   Up 19 minutes             k8s_redis_redis-replicas-0_default_4aebff3c-12a1-480a-b591-6da07a7bb4a3_12
+e1582ca9bff8   0383c71164bc                "/bin/bash -c /opt/b…"   19 minutes ago   Up 19 minutes             k8s_redis_redis-replicas-2_default_cc9fc5cf-a3ff-4e74-9fde-3b0b9bcea9fd_10
+f98ab05ad83f   13753a81eccf                "/hello-app"             20 minutes ago   Up 20 minutes             k8s_hello-app_web-68487bc957-69prv_default_05efaa4e-0d67-4453-9e49-eecb213e1f2b_3
+7ca96927ed37   d47bd2448513                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_jenkins_jenkinsbitnami-69755ffdcb-4kblr_default_b6767915-7228-4a50-87e3-b2eb3bf0ed95_4
+048aced536a4   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_web-68487bc957-69prv_default_05efaa4e-0d67-4453-9e49-eecb213e1f2b_3
+781857da796c   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_jenkinsbitnami-69755ffdcb-4kblr_default_b6767915-7228-4a50-87e3-b2eb3bf0ed95_4
+e190df128a21   2e323c17c227                "python -u /app/side…"   20 minutes ago   Up 20 minutes             k8s_jenkins-sc-config_my-release-jenkins-6689fc4db9-5d5zr_default_c2a2a6f7-8c0a-42ad-a619-cfdff4f2c516_4
+6c6a18768fcb   jenkins/jenkins             "/usr/bin/tini -- /u…"   20 minutes ago   Up 20 minutes             k8s_jenkins_my-release-jenkins-6689fc4db9-5d5zr_default_c2a2a6f7-8c0a-42ad-a619-cfdff4f2c516_4
+a1fb7122d1a7   7b4a3fae820f                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_odoo_odoo-56fb5bcd6-kcdls_default_cda14074-16b0-4c84-b622-838890515477_6
+7e4d98cefb10   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_odoo-56fb5bcd6-kcdls_default_cda14074-16b0-4c84-b622-838890515477_6
+e78fcce72cd7   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_redis-replicas-1_default_82ed3b7d-bca9-4352-b070-02662d0ad423_6
+74f239af5e3b   2a3e4846a454                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_wildfly_wildflybitnami-5544cb9c58-ddj7n_default_bdd2bac2-ca96-43d3-b50f-e7bf871081f8_3
+39dbf90cd81c   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_wildflybitnami-5544cb9c58-ddj7n_default_bdd2bac2-ca96-43d3-b50f-e7bf871081f8_3
+5011c24d6a08   e28679eb0fe2                "/nginx-ingress-cont…"   20 minutes ago   Up 20 minutes             k8s_controller_nginx-ingress-controller-bitnami-6b5f9cb9d-564tb_default_65fd340a-6509-43a9-8c3b-ecf92f451005_3
+b9352c3a762f   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_redis-replicas-0_default_4aebff3c-12a1-480a-b591-6da07a7bb4a3_6
+4f8df8a14a77   07655ddf2eeb                "/dashboard --insecu…"   20 minutes ago   Up 20 minutes             k8s_kubernetes-dashboard_kubernetes-dashboard-55c4cbbc7c-vshrk_kubernetes-dashboard_75d3362f-e1f2-4f41-9946-c9ba0af63eea_6
+f8b0d21d4968   5167d027ba77                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_postgresql_odoo-postgresql-0_default_dda91ffd-d178-41cb-b115-89709b1ef67a_6
+3d6cc0d74e46   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_nginx-ingress-controller-bitnami-6b5f9cb9d-564tb_default_65fd340a-6509-43a9-8c3b-ecf92f451005_3
+bb85ffeac813   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_kubernetes-dashboard-55c4cbbc7c-vshrk_kubernetes-dashboard_75d3362f-e1f2-4f41-9946-c9ba0af63eea_8
+439d33a49fe9   115053965e86                "/metrics-sidecar"       20 minutes ago   Up 20 minutes             k8s_dashboard-metrics-scraper_dashboard-metrics-scraper-5c6664855-dm5jn_kubernetes-dashboard_1233fc3d-a644-48d5-b103-f22b082d30df_6
+cdb616e43059   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_odoo-postgresql-0_default_dda91ffd-d178-41cb-b115-89709b1ef67a_6
+b5d0fd75da3a   0d4c0564c465                "/usr/bin/dumb-init …"   20 minutes ago   Up 20 minutes             k8s_controller_ingress-nginx-controller-6cc5ccb977-wnqh8_ingress-nginx_e2de0190-bd27-4550-b3ad-f9d2a33f6908_3
+3e0edfd565e0   5185b96f0bec                "/coredns -conf /etc…"   20 minutes ago   Up 20 minutes             k8s_coredns_coredns-787d4945fb-8xjzq_kube-system_a9212d97-5ef7-4124-a37e-8439ec1e0f86_6
+72ec667df37c   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_dashboard-metrics-scraper-5c6664855-dm5jn_kubernetes-dashboard_1233fc3d-a644-48d5-b103-f22b082d30df_6
+778ed719102e   6e38f40d628d                "/storage-provisioner"   20 minutes ago   Up 20 minutes             k8s_storage-provisioner_storage-provisioner_kube-system_489ea068-218c-464f-a5d1-14e2ba51221c_14
+9f27e666c522   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_storage-provisioner_kube-system_489ea068-218c-464f-a5d1-14e2ba51221c_6
+b7e52ac3e994   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_ingress-nginx-controller-6cc5ccb977-wnqh8_ingress-nginx_e2de0190-bd27-4550-b3ad-f9d2a33f6908_3
+1402090a2dea   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_coredns-787d4945fb-8xjzq_kube-system_a9212d97-5ef7-4124-a37e-8439ec1e0f86_6
+8506b622f07c   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_my-release-jenkins-6689fc4db9-5d5zr_default_c2a2a6f7-8c0a-42ad-a619-cfdff4f2c516_4
+4e8876f74776   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_redis-replicas-2_default_cc9fc5cf-a3ff-4e74-9fde-3b0b9bcea9fd_6
+ca5a892cc4dd   0383c71164bc                "/bin/bash -c /opt/b…"   20 minutes ago   Up 20 minutes             k8s_redis_redis-master-0_default_8bee0e91-709d-46b9-bdb5-d47359f486b4_6
+ea91d7f23d0f   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_redis-master-0_default_8bee0e91-709d-46b9-bdb5-d47359f486b4_6
+df0ed1d361de   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_kafkabitnami-0_default_de4492ea-a340-428c-9413-00144132d498_3
+8477e0b2c4aa   92ed2bec97a6                "/usr/local/bin/kube…"   20 minutes ago   Up 20 minutes             k8s_kube-proxy_kube-proxy-hcdzv_kube-system_80a12bca-07d0-4c11-869d-a2d407ca9223_6
+daec24728a2d   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_kube-proxy-hcdzv_kube-system_80a12bca-07d0-4c11-869d-a2d407ca9223_6
+a89778966d4a   3551dbc7aeb5                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_flink-jobmanager_flinkbitnami-jobmanager-578c45fd5-m4h84_default_e1d39a15-4659-4b59-8d68-05da5def1a17_5
+cfb30d06dcc7   11bd5852655e                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_rabbitmq_rabbitmqbitnami-0_default_1165c1ea-b6b0-4a82-ae79-6945cddd994f_3
+4a5e93fad152   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_flinkbitnami-jobmanager-578c45fd5-m4h84_default_e1d39a15-4659-4b59-8d68-05da5def1a17_3
+d18f9f676a9e   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_rabbitmqbitnami-0_default_1165c1ea-b6b0-4a82-ae79-6945cddd994f_3
+342ab0a97c5a   0a32dfb784dc                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_mongodb_mongodb-75ff454cbc-nl2xj_default_05e0a35c-7b57-4387-b8d2-0e8577416537_6
+2de06f1fe5e2   3551dbc7aeb5                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_flink-taskmanager_flinkbitnami-taskmanager-64fcdf8476-wd8mx_default_60b21daa-4ccc-4a0f-8d43-c88345d00d41_3
+0c227da67e4c   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_mongodb-75ff454cbc-nl2xj_default_05e0a35c-7b57-4387-b8d2-0e8577416537_7
+3c46f75b0403   7a094f97a968                "/opt/bitnami/script…"   20 minutes ago   Up 20 minutes             k8s_default-backend_nginx-ingress-controller-bitnami-default-backend-698fcff455pj87_default_e2453ca8-8d3d-44aa-a826-2647171c4e2e_3
+60a04096ad8d   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_flinkbitnami-taskmanager-64fcdf8476-wd8mx_default_60b21daa-4ccc-4a0f-8d43-c88345d00d41_3
+17655ea85135   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_nginx-ingress-controller-bitnami-default-backend-698fcff455pj87_default_e2453ca8-8d3d-44aa-a826-2647171c4e2e_3
+16ffe444260c   5a7904736932                "kube-scheduler --au…"   20 minutes ago   Up 20 minutes             k8s_kube-scheduler_kube-scheduler-minikube_kube-system_0818f4b1a57de9c3f9c82667e7fcc870_6
+42e0bc453bea   ce8c2293ef09                "kube-controller-man…"   20 minutes ago   Up 20 minutes             k8s_kube-controller-manager_kube-controller-manager-minikube_kube-system_466b9e73e627277a8c24637c2fa6442d_6
+4b1862e9f3dd   fce326961ae2                "etcd --advertise-cl…"   20 minutes ago   Up 20 minutes             k8s_etcd_etcd-minikube_kube-system_a121e106627e5c6efa9ba48006cc43bf_6
+5b53d65c3452   1d9b3cbae03c                "kube-apiserver --ad…"   20 minutes ago   Up 20 minutes             k8s_kube-apiserver_kube-apiserver-minikube_kube-system_cdcbce216c62c4407ac9a51ac013e7d7_6
+eccab698b8ad   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_kube-scheduler-minikube_kube-system_0818f4b1a57de9c3f9c82667e7fcc870_6
+9c9111a0c48f   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_etcd-minikube_kube-system_a121e106627e5c6efa9ba48006cc43bf_6
+f115bfe929e1   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_kube-apiserver-minikube_kube-system_cdcbce216c62c4407ac9a51ac013e7d7_6
+5bd77100b532   registry.k8s.io/pause:3.9   "/pause"                 20 minutes ago   Up 20 minutes             k8s_POD_kube-controller-manager-minikube_kube-system_466b9e73e627277a8c24637c2fa6442d_6
+docker@minikube:~$ 
+
