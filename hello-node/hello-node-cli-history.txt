@@ -1,0 +1,580 @@
+  500  microk8s kubectl -n kube-system describe secret $token
+  501* nano
+  502  microk8s status --wait-ready
+  503  kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
+  504  kubectl deployment
+  505* kubectl
+  506  kubectl get deployment hello-node -o yaml
+  507  kubectl get deployment hello-node -o yaml > hello-node_deployment.txt
+  508  mcedit hello-node_deployment.txt
+  509  kubectl get pods
+  510  kubectl get event
+  511  kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+  512  kubectl get sv
+  513  kubectl get sev
+  514  kubectl get ser
+  515  kubectl get services
+  516  ip a | grep 192
+  517  curl http://192.168.1.24:32315
+  518  kubectl logs hello-node-ccf4b9788-22cpr --follow
+  519  k9s
+  520  snap k9s
+  521  snap ;ost
+  522  snap
+  523  snap list
+  524  mamo hello-node_ingress.txt
+  525  nano hello-node_ingress.txt
+  526  cat hello-node_ingress.txt
+  527  mv hello-node_ingress.txt hello-node_ingress.yaml
+  528  kubectl create -f hello-node_ingress.yaml
+  529  kubectl get ingress
+  530  kubectl get ingress hello-node-ingress -o yaml
+  531  mamo hello-node_ingress.yaml
+  532  nano hello-node_ingress.yaml
+  533  curl http://192.168.1.24:8080
+  534  nano hello-node_ingress.yaml
+  535  kubectl apply -f hello-node_ingress.yaml
+  536  nano hello-node_ingress.yaml
+  537  kubectl get ingress
+  538  cat hello-node_ingress.yaml
+  539  kubectl apply -f hello-node_ingress.yaml
+  540  curl http://192.168.1.24
+  541  curl http://192.168.1.24/hello-node-ingress
+  542  curl http://192.168.1.24/hello-node-ingress/
+  543  curl http://192.168.1.24/hello-node
+  544  curl http://192.168.1.24/hello-node/
+  545  nano hello-node_ingress.yaml
+  546  kubectl apply -f hello-node_ingress.yaml
+  547  cat hello-node_ingress.yaml
+  548  kubectl get ingress
+  549  curl http://192.168.1.24/hello-node/
+  550  curl http://192.168.1.24/hello-node/
+  551  kubectl get registry
+  552  docker registry
+  553  docker images
+  554  history
+
+david@lmde:~$ multipass list
+No instances found.
+david@lmde:~$ microk8s status --wait-ready
+microk8s is running
+high-availability: no
+  datastore master nodes: 127.0.0.1:19001
+  datastore standby nodes: none
+addons:
+  enabled:
+    argocd               # (community) Argo CD is a declarative continuous deployment for Kubernetes.
+    dashboard-ingress    # (community) Ingress definition for Kubernetes dashboard
+    fluentd              # (community) Elasticsearch-Fluentd-Kibana logging and monitoring
+    gopaddle             # (community) DevSecOps and Multi-Cloud Kubernetes Platform
+    istio                # (community) Core Istio service mesh services
+    openfaas             # (community) OpenFaaS serverless framework
+    cert-manager         # (core) Cloud native certificate management
+    community            # (core) The community addons repository
+    dashboard            # (core) The Kubernetes dashboard
+    dns                  # (core) CoreDNS
+    ha-cluster           # (core) Configure high availability on the current node
+    helm                 # (core) Helm - the package manager for Kubernetes
+    helm3                # (core) Helm 3 - the package manager for Kubernetes
+    hostpath-storage     # (core) Storage class; allocates storage from host directory
+    ingress              # (core) Ingress controller for external access
+    metrics-server       # (core) K8s Metrics Server for API access to service metrics
+    registry             # (core) Private image registry exposed on localhost:32000
+    storage              # (core) Alias to hostpath-storage add-on, deprecated
+  disabled:
+    cilium               # (community) SDN, fast with full network policy
+    easyhaproxy          # (community) EasyHAProxy can configure HAProxy automatically based on ingress labels
+    inaccel              # (community) Simplifying FPGA management in Kubernetes
+    jaeger               # (community) Kubernetes Jaeger operator with its simple config
+    kata                 # (community) Kata Containers is a secure runtime with lightweight VMS
+    keda                 # (community) Kubernetes-based Event Driven Autoscaling
+    knative              # (community) Knative Serverless and Event Driven Applications
+    kubearmor            # (community) Cloud-native runtime security enforcement system for k8s
+    kwasm                # (community) WebAssembly support for WasmEdge (Docker Wasm) and Spin (Azure AKS WASI)
+    linkerd              # (community) Linkerd is a service mesh for Kubernetes and other frameworks
+    microcks             # (community) Open source Kubernetes Native tool for API Mocking and Testing
+    multus               # (community) Multus CNI enables attaching multiple network interfaces to pods
+    nfs                  # (community) NFS Server Provisioner
+    ondat                # (community) Ondat is a software-defined, cloud native storage platform for Kubernetes.
+    openebs              # (community) OpenEBS is the open-source storage solution for Kubernetes
+    osm-edge             # (community) osm-edge is a lightweight SMI compatible service mesh for the edge-computing.
+    parking              # (community) Static webserver to park a domain. Works with EasyHAProxy.
+    portainer            # (community) Portainer UI for your Kubernetes cluster
+    shifu                # (community) Kubernetes native IoT software development framework.
+    sosivio              # (community) Kubernetes Predictive Troubleshooting, Observability, and Resource Optimization
+    traefik              # (community) traefik Ingress controller
+    trivy                # (community) Kubernetes-native security scanner
+    cis-hardening        # (core) Apply CIS K8s hardening
+    gpu                  # (core) Automatic enablement of Nvidia CUDA
+    host-access          # (core) Allow Pods connecting to Host services smoothly
+    kube-ovn             # (core) An advanced network fabric for Kubernetes
+    mayastor             # (core) OpenEBS MayaStor
+    metallb              # (core) Loadbalancer for your Kubernetes cluster
+    minio                # (core) MinIO object storage
+    observability        # (core) A lightweight observability stack for logs, traces and metrics
+    prometheus           # (core) Prometheus operator for monitoring and logging
+    rbac                 # (core) Role-Based Access Control for authorisation
+    rook-ceph            # (core) Distributed Ceph storage using Rook
+david@lmde:~$ kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
+deployment.apps/hello-node created
+david@lmde:~$ kubectl deployment
+Error: unknown command "deployment" for "kubectl"
+Run 'kubectl --help' for usage.
+david@lmde:~$ kubectl get deployment
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+hello-node   1/1     1            1           2m3s
+david@lmde:~$ kubectl get deployment hello-node -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2024-04-12T16:04:19Z"
+  generation: 1
+  labels:
+    app: hello-node
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            f:containers:
+              k:{"name":"agnhost"}:
+                .: {}
+                f:command: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2024-04-12T16:04:19Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kubelite
+    operation: Update
+    subresource: status
+    time: "2024-04-12T16:04:27Z"
+  name: hello-node
+  namespace: default
+  resourceVersion: "1799119"
+  uid: 98ae6b97-f03a-43ff-ac7e-cab67a7349d8
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hello-node
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello-node
+    spec:
+      containers:
+      - command:
+        - /agnhost
+        - netexec
+        - --http-port=8080
+        image: registry.k8s.io/e2e-test-images/agnhost:2.39
+        imagePullPolicy: IfNotPresent
+        name: agnhost
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2024-04-12T16:04:27Z"
+    lastUpdateTime: "2024-04-12T16:04:27Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2024-04-12T16:04:19Z"
+    lastUpdateTime: "2024-04-12T16:04:27Z"
+    message: ReplicaSet "hello-node-ccf4b9788" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
+david@lmde:~$ kubectl get deployment hello-node -o yaml > hello-node_deployment.txt
+david@lmde:~$ mcedit hello-node_deployment.txt
+
+david@lmde:~$ kubectl get pods
+NAME                         READY   STATUS    RESTARTS   AGE
+hello-node-ccf4b9788-22cpr   1/1     Running   0          15m
+david@lmde:~$ kubectl get event
+LAST SEEN   TYPE      REASON                OBJECT      MESSAGE
+4m42s       Warning   FreeDiskSpaceFailed   node/lmde   (combined from similar events): Failed to garbage collect required amount of images. Attempted to free 9361092608 bytes, but only found 0 bytes eligible to free.
+4m42s       Warning   ImageGCFailed         node/lmde   (combined from similar events): Failed to garbage collect required amount of images. Attempted to free 9361092608 bytes, but only found 0 bytes eligible to free.
+david@lmde:~$ kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+service/hello-node exposed
+david@lmde:~$ kubectl get sv
+error: the server doesn't have a resource type "sv"
+david@lmde:~$ kubectl get sev
+error: the server doesn't have a resource type "sev"
+david@lmde:~$ kubectl get ser
+error: the server doesn't have a resource type "ser"
+david@lmde:~$ kubectl get services
+NAME         TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP      10.152.183.1     <none>        443/TCP          122d
+hello-node   LoadBalancer   10.152.183.227   <pending>     8080:32315/TCP   89s
+david@lmde:~$ ip a | grep 192
+    inet 192.168.1.24/24 brd 192.168.1.255 scope global dynamic noprefixroute eno1
+    link/ether ee:ee:ee:ee:ee:ee brd ff:ff:ff:ff:ff:ff link-netns cni-a1845192-7fb9-2755-c23a-cc2fb1428660
+david@lmde:~$ curl http://192.168.1.24:32315
+NOW: 2024-04-12 16:47:37.597422015 +0000 UTC m=+2590.819121617david@lmde:~$
+david@lmde:~$ kubectl logs hello-node-ccf4b9788-22cpr --follow
+I0412 16:04:26.794104       1 log.go:195] Started HTTP server on port 8080
+I0412 16:04:26.794395       1 log.go:195] Started UDP server on port  8081
+I0412 16:46:21.682347       1 log.go:195] GET /
+I0412 16:46:21.758175       1 log.go:195] GET /
+I0412 16:47:37.597411       1 log.go:195] GET /
+^C
+david@lmde:~$ k9s
+Nie znaleziono polecenia 'k9s', czy chodziło o:
+  polecenie 'kas' z pakietu deb kas
+Wypróbuj: sudo apt install <nazwa pakietu deb>
+david@lmde:~$ snap k9s
+error: unknown command "k9s", see 'snap help'.
+david@lmde:~$ snap ;ost
+The snap command lets you install, configure, refresh and remove snaps.
+Snaps are packages that work across many different Linux distributions,
+enabling secure delivery and operation of the latest apps and utilities.
+
+Usage: snap <command> [<options>...]
+
+Commonly used commands can be classified as follows:
+
+           Basics: find, info, install, remove, list
+          ...more: refresh, revert, switch, disable, enable, create-cohort
+          History: changes, tasks, abort, watch
+          Daemons: services, start, stop, restart, logs
+      Permissions: connections, interface, connect, disconnect
+    Configuration: get, set, unset, wait
+      App Aliases: alias, aliases, unalias, prefer
+          Account: login, logout, whoami
+        Snapshots: saved, save, check-snapshot, restore, forget
+           Device: model, remodel, reboot, recovery
+     Quota Groups: set-quota, remove-quota, quotas, quota
+  Validation Sets: validate
+        ... Other: warnings, okay, known, ack, version
+      Development: validate
+
+For more information about a command, run 'snap help <command>'.
+For a short summary of all commands, run 'snap help --all'.
+Polecenie 'ost' nie zostało znalezione, ale można je zainstalować za pomocą:
+sudo apt install openstructure
+david@lmde:~$ snap
+The snap command lets you install, configure, refresh and remove snaps.
+Snaps are packages that work across many different Linux distributions,
+enabling secure delivery and operation of the latest apps and utilities.
+
+Usage: snap <command> [<options>...]
+
+Commonly used commands can be classified as follows:
+
+           Basics: find, info, install, remove, list
+          ...more: refresh, revert, switch, disable, enable, create-cohort
+          History: changes, tasks, abort, watch
+          Daemons: services, start, stop, restart, logs
+      Permissions: connections, interface, connect, disconnect
+    Configuration: get, set, unset, wait
+      App Aliases: alias, aliases, unalias, prefer
+          Account: login, logout, whoami
+        Snapshots: saved, save, check-snapshot, restore, forget
+           Device: model, remodel, reboot, recovery
+     Quota Groups: set-quota, remove-quota, quotas, quota
+  Validation Sets: validate
+        ... Other: warnings, okay, known, ack, version
+      Development: validate
+
+For more information about a command, run 'snap help <command>'.
+For a short summary of all commands, run 'snap help --all'.
+david@lmde:~$ snap list
+Name               Version                Rev    Tracking          Publisher      Notes
+bare               1.0                    5      latest/stable     canonical✓     base
+code               e170252f               157    latest/stable     vscode✓        classic
+core               16-2.61.2              16928  latest/stable     canonical✓     core
+core18             20231027               2812   latest/stable     canonical✓     base
+core20             20240227               2264   latest/stable     canonical✓     base
+core22             20240111               1122   latest/stable     canonical✓     base
+git-ubuntu         1.1                    1289   latest/stable     canonical✓     classic
+gnome-42-2204      0+git.510a601          172    latest/stable     canonical✓     -
+gtk-common-themes  0.1-81-g442e511        1535   latest/stable     canonical✓     -
+hello-world        6.4                    29     latest/stable     canonical✓     -
+htop               3.3.0                  4079   latest/stable     maxiberta      -
+juju               3.4.2                  26968  3/stable          canonical✓     -
+lxd                5.21.1-ec2af1c         28056  latest/candidate  canonical✓     -
+microk8s           v1.28.7                6541   1.28/stable       canonical✓     classic
+multipass          1.13.1                 12146  latest/stable     canonical✓     -
+nmap               7.94                   3262   latest/stable     maxiberta      -
+semaphore          2.9.56                 279    latest/stable     semaphoreui    -
+snap-store         41.3-77-g7dc86c8       1113   latest/stable     canonical✓     -
+terraform          1.8.0                  666    latest/stable     snapcrafters✪  classic
+youtube-dl         2021.12.17+git01bf89e  4806   latest/stable     joeborg        -
+david@lmde:~$ mamo hello-node_ingress.txt
+Nie znaleziono polecenia 'mamo', czy chodziło o:
+  polecenie 'mame' ze snapa mame (mame0264)
+  polecenie 'memo' z pakietu deb memo
+  polecenie 'mako' z pakietu deb mako-notifier
+Zobacz 'snap info <nazwasnapa>' dla dodatkowych wersji.
+david@lmde:~$ nano hello-node_ingress.txt
+david@lmde:~$ cat hello-node_ingress.txt
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-node-ingress
+  annotations:
+spec:
+  rules:
+    - host: hello-node.info
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-node
+                port:
+                  number: 8080
+david@lmde:~$ kubectl create -f h
+hello-node_deployment.txt  hello-node_ingress.txt     hvac/                      
+david@lmde:~$ cp h
+hello-node_deployment.txt  hello-node_ingress.txt     hvac/                      
+david@lmde:~$ mv hello-node_ingress.txt hello-node_ingress.yaml
+david@lmde:~$ kubectl create -f hello-node_ingress.yaml
+ingress.networking.k8s.io/hello-node-ingress created
+david@lmde:~$ kubectl get ingress
+NAME                 CLASS    HOSTS             ADDRESS     PORTS   AGE
+hello-node-ingress   public   hello-node.info   127.0.0.1   80      22s
+david@lmde:~$ kubectl get ingress h
+hello-node_deployment.txt  hello-node_ingress.yaml    hvac/                      
+david@lmde:~$ kubectl get ingress hello-node-ingress -o yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  creationTimestamp: "2024-04-12T17:11:06Z"
+  generation: 1
+  managedFields:
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:rules: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2024-04-12T17:11:06Z"
+  - apiVersion: networking.k8s.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: nginx-ingress-controller
+    operation: Update
+    subresource: status
+    time: "2024-04-12T17:11:17Z"
+  name: hello-node-ingress
+  namespace: default
+  resourceVersion: "1814196"
+  uid: d936df0c-d07f-4b0c-8b12-a77d2f3feef3
+spec:
+  ingressClassName: public
+  rules:
+  - host: hello-node.info
+    http:
+      paths:
+      - backend:
+          service:
+            name: hello-node
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 127.0.0.1
+david@lmde:~$ mamo hello-node_ingress.yaml
+Nie znaleziono polecenia 'mamo', czy chodziło o:
+  polecenie 'mame' ze snapa mame (mame0264)
+  polecenie 'memo' z pakietu deb memo
+  polecenie 'mako' z pakietu deb mako-notifier
+Zobacz 'snap info <nazwasnapa>' dla dodatkowych wersji.
+david@lmde:~$ nano hello-node_ingress.yaml
+david@lmde:~$ curl http://192.168.1.24:8080
+curl: (7) Failed to connect to 192.168.1.24 port 8080 after 0 ms: Couldn't connect to server
+david@lmde:~$ nano hello-node_ingress.yaml
+david@lmde:~$ kubectl apply -f hello-node_ingress.yaml
+Warning: resource ingresses/hello-node-ingress is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+ingress.networking.k8s.io/hello-node-ingress configured
+david@lmde:~$ nano hello-node_ingress.yaml
+david@lmde:~$ kubectl get ingress
+NAME                 CLASS    HOSTS             ADDRESS     PORTS   AGE
+hello-node-ingress   public   hello-node.info   127.0.0.1   80      33m
+david@lmde:~$ cat hello-node_ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-node-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /hello-node/
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-node-ingress
+                port:
+                  number: 8080
+david@lmde:~$ kubectl apply -f hello-node_ingress.yaml
+ingress.networking.k8s.io/hello-node-ingress configured
+david@lmde:~$ curl http://192.168.1.24
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+david@lmde:~$ curl http://192.168.1.24/hello-node-ingress
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+david@lmde:~$ curl http://192.168.1.24/hello-node-ingress/
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+david@lmde:~$ curl http://192.168.1.24/hello-node
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+david@lmde:~$ curl http://192.168.1.24/hello-node/
+<html>
+<head><title>503 Service Temporarily Unavailable</title></head>
+<body>
+<center><h1>503 Service Temporarily Unavailable</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+david@lmde:~$ nano hello-node_ingress.yaml
+david@lmde:~$ kubectl apply -f hello-node_ingress.yaml
+ingress.networking.k8s.io/hello-node-ingress configured
+david@lmde:~$ cat hello-node_ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-node-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /hello-node/
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-node
+                port:
+                  number: 8080
+david@lmde:~$ kubectl get ingress
+NAME                 CLASS    HOSTS   ADDRESS     PORTS   AGE
+hello-node-ingress   public   *       127.0.0.1   80      40m
+david@lmde:~$ curl http://192.168.1.24/hello-node/
+NOW: 2024-04-1curl http://192.168.1.24/hello-node/
+NOW: 2024-04-12 18:01:49.053909239 +0000 UTC m=+7042.275608842david@lmde:~$
+david@lmde:~$ kubectl get registry
+error: the server doesn't have a resource type "registry"
+david@lmde:~$ docker registry
+docker: 'registry' is not a docker command.
+See 'docker --help'
+david@lmde:~$ docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED         SIZE
+hello-world                   latest    9c7a54a9a43c   11 months ago   13.3kB
+gcr.io/k8s-minikube/kicbase   v0.0.39   67a4b1138d2d   12 months ago   1.05GB
+gcr.io/k8s-minikube/kicbase   v0.0.32   ff7b11088f07   22 months ago   1.15GB
+david@lmde:~$
