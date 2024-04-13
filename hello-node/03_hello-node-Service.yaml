@@ -1,0 +1,56 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-node
+  namespace: default
+  uid: 07613ea9-937f-4d5b-b800-8fc0e39d22fc
+  resourceVersion: '1807315'
+  creationTimestamp: '2024-04-12T16:42:42Z'
+  labels:
+    app: hello-node
+  managedFields:
+    - manager: kubectl-expose
+      operation: Update
+      apiVersion: v1
+      time: '2024-04-12T16:42:42Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:allocateLoadBalancerNodePorts: {}
+          f:externalTrafficPolicy: {}
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 32315
+  selector:
+    app: hello-node
+  clusterIP: 10.152.183.227
+  clusterIPs:
+    - 10.152.183.227
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  allocateLoadBalancerNodePorts: true
+  internalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}

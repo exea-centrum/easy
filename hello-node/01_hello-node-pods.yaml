@@ -1,0 +1,207 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: hello-node-ccf4b9788-22cpr
+  generateName: hello-node-ccf4b9788-
+  namespace: default
+  uid: 50dc8864-781b-483f-9f4a-c2589da575ea
+  resourceVersion: '1862758'
+  creationTimestamp: '2024-04-12T16:04:19Z'
+  labels:
+    app: hello-node
+    pod-template-hash: ccf4b9788
+  annotations:
+    cni.projectcalico.org/containerID: 741cebbc10b8b5b166f02b613b1c0a0239d250cdc801c1777e84d83fd42cb224
+    cni.projectcalico.org/podIP: 10.1.181.67/32
+    cni.projectcalico.org/podIPs: 10.1.181.67/32
+  ownerReferences:
+    - apiVersion: apps/v1
+      kind: ReplicaSet
+      name: hello-node-ccf4b9788
+      uid: b0267d99-65ab-4b43-b949-b72dc0bcf54f
+      controller: true
+      blockOwnerDeletion: true
+  managedFields:
+    - manager: kubelite
+      operation: Update
+      apiVersion: v1
+      time: '2024-04-12T16:04:19Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"b0267d99-65ab-4b43-b949-b72dc0bcf54f"}: {}
+        f:spec:
+          f:containers:
+            k:{"name":"agnhost"}:
+              .: {}
+              f:command: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:terminationGracePeriodSeconds: {}
+    - manager: calico
+      operation: Update
+      apiVersion: v1
+      time: '2024-04-13T15:09:23Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:cni.projectcalico.org/containerID: {}
+            f:cni.projectcalico.org/podIP: {}
+            f:cni.projectcalico.org/podIPs: {}
+      subresource: status
+    - manager: kubelite
+      operation: Update
+      apiVersion: v1
+      time: '2024-04-13T15:09:25Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"10.1.181.67"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      subresource: status
+spec:
+  volumes:
+    - name: kube-api-access-pp4l2
+      projected:
+        sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              name: kube-root-ca.crt
+              items:
+                - key: ca.crt
+                  path: ca.crt
+          - downwardAPI:
+              items:
+                - path: namespace
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+        defaultMode: 420
+  containers:
+    - name: agnhost
+      image: registry.k8s.io/e2e-test-images/agnhost:2.39
+      command:
+        - /agnhost
+        - netexec
+        - '--http-port=8080'
+      resources: {}
+      volumeMounts:
+        - name: kube-api-access-pp4l2
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 30
+  dnsPolicy: ClusterFirst
+  serviceAccountName: default
+  serviceAccount: default
+  nodeName: lmde
+  securityContext: {}
+  schedulerName: default-scheduler
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+  priority: 0
+  enableServiceLinks: true
+  preemptionPolicy: PreemptLowerPriority
+status:
+  phase: Running
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-04-12T16:04:19Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-04-13T15:09:25Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-04-13T15:09:25Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2024-04-12T16:04:19Z'
+  hostIP: 192.168.1.24
+  podIP: 10.1.181.67
+  podIPs:
+    - ip: 10.1.181.67
+  startTime: '2024-04-12T16:04:19Z'
+  containerStatuses:
+    - name: agnhost
+      state:
+        running:
+          startedAt: '2024-04-13T15:09:24Z'
+      lastState:
+        terminated:
+          exitCode: 255
+          reason: Unknown
+          startedAt: '2024-04-13T08:57:29Z'
+          finishedAt: '2024-04-13T15:09:03Z'
+          containerID: >-
+            containerd://ff24394fd9694316570627b12fcb4fb3c1be610a6fbb3e1f07c10b14a0edac0b
+      ready: true
+      restartCount: 2
+      image: registry.k8s.io/e2e-test-images/agnhost:2.39
+      imageID: >-
+        registry.k8s.io/e2e-test-images/agnhost@sha256:7e8bdd271312fd25fc5ff5a8f04727be84044eb3d7d8d03611972a6752e2e11e
+      containerID: >-
+        containerd://ba7c60d2e5fdc88cc3d2a2936c2b5e9966fd1a9f89629f6547df8e2ee5d0d904
+      started: true
+  qosClass: BestEffort
